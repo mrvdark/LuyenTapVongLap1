@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 1</title>
+    <script>
+        // Bài 1: Sử dụng vòng lặp để đếm từ 1 đến 100. Khi số là 99, hiển thị hộp thoại thông báo
+        function countOnetoHundred() {
+            for (let i = 1; i < 100; i++) {
+                if (i === 99) alert(i);
+            }
+        }
+        // Bài 2
+        function insertTemp() {
+            let temp = parseInt(prompt("Insert Template"));
+            while (temp < 20 || temp > 100) {
+                if (temp < 20) alert("Tăng nhiệt độ lên");
+                else if (temp > 100) alert("Giảm nhiệt độ xuống");
+                temp = parseInt(prompt("Insert Template"));
+            }
+            alert(temp);
+        }
+        // Bài 3: Hiển thị ra 20 số đầu tiên trong dãy fibonacci
+        function showFibo() {
+            let fibo = fib(20);
+            document.write(fibo);
+        }
+        function fib(n) {
+            let arr = [0, 1];
+            let i = 2;
+            while (i < n) {
+                arr.push(arr[i - 2] + arr[i - 1]);
+                i++;
+            }
+            return arr;
+        }
+        // Bài 4: Tìm số đầu tiên trong dãy fibonacci chia hết cho 5
+        function fiboFive() {
+            let i = 1;
+            let flag = 0;
+            while (flag === 0) {
+                let fibo = fib(i + 1);
+                if (fibo[i] % 5 === 0) flag = fibo[i];
+                else i++;
+            }
+            document.write(flag)
+        }
+        // Bài 5: Tính tổng của 20 số đầu tiên trong dãy fibonacci
+        function sum20first() {
+            let fibo = fib(20);
+            let i = 0;
+            let sum = null;
+            while (i <20) {
+                sum += fibo[i];
+                i++;
+            }
+            document.write(sum);
+        }
+        // Bài 6: Tính tổng của 30 số chia hết cho 7 đầu tiên trong các số tự nhiên
+        function sum30first() {
+            let i = 1;
+            let count = 0;
+            let sum = null;
+            while (count < 30) {
+                if (i % 7 === 0) {
+                    sum += i;
+                    count++;
+                }
+                i++;
+            }
+            document.write(sum);
+        }
+        // Bài 7
+        function bai7() {
+            let i = 0;
+            let result = null;
+            while (i <= 100) {
+                if (i % 3 === 0 && i % 5 === 0) result = "FizzBuzz";
+                else if (i % 3 === 0) result = "Fizz";
+                else if (i % 5 === 0) result = "Buzz";
+                else result = i;
+                document.write(result + "-");
+                i++;
+            }
+        }
+        // Bài 8
+        function bai8() {
+            let guessran = parseInt(prompt("Bạn muốn đoán trong khoảng số bao nhiêu ?"));
+            let winnum = Math.floor(Math.random() * guessran);
+            let guessnum = parseInt(prompt("Đoán bừa 1 số xem trúng không ?"));
+            let count = 0;
+            while (guessnum !== winnum && count <= 3) {
+                if (guessnum > winnum) alert("To quá, đoán số bé thôi !!!");
+                else if (guessnum < winnum) alert("Bé thế, đoán to to vào !!!");
+                count++;
+                if (count === 3) alert("You LOSEEEEEEEE !!!!!!");
+                else guessnum = parseInt(prompt("Đoán lại xem trúng không ?"));
+            }
+            alert("You are Winner !!! Win number is " + winnum);
+        }
+    </script>
+</head>
+<body>
+<button onclick="bai8()" type="button">Hãy thử đoán xem!</button>
+</body>
+</html>
